@@ -1,6 +1,6 @@
 # imports
 import os
-os.chdir('C:/Users/sophi/Documents/Schwartz/NEURON/bSbC Paper Model/IndiraModel2/')
+os.chdir('C:/Users/Documents/Schwartz/NEURON/bSbC Paper Model/')
 import csv
 import numpy
 import scipy.io
@@ -15,7 +15,9 @@ h.celsius = temp
 dt = 0.01
 h.dt = dt
 
-
+## Notes:
+## using mod files from (Hu et al. 2009) written by Zach Mainen, Salk Institute, 1994, zach@salk.edu
+## some values from Fohlmeister 1997 multiplied by 1E-9
 
 class HybridCell:
     def __init__(self, v_init, NaVRatio, Multiplier, NaDensity, KDensity, SomaDiam, DendLen, HillLen, AISLen):
@@ -155,7 +157,4 @@ class HybridCell:
     def __repr__(self):
         return 'AISCell[{}]'
         
-# to do
-## need to somehow change the HMI to -53 instead of -70
-## using mod files from (Hu et al. 2009) written by Zach Mainen, Salk Institute, 1994, zach@salk.edu
-## some values from Fohlmeister 1997 multiplied by 1E-9
+

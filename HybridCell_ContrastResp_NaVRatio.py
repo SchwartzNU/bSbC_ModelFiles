@@ -1,6 +1,6 @@
 # imports
 import os
-os.chdir('C:/Users/sophi/Documents/Schwartz/NEURON/bSbC Paper Model/IndiraModel2/')
+os.chdir('C:/Users/Documents/Schwartz/NEURON/bSbC Paper Model/IndiraModel2/')
 import csv
 import numpy
 import scipy.io
@@ -17,17 +17,17 @@ from HybridCell import HybridCell
 temp = 32
 h.celsius = temp
 
-vLeak = -50
-v_init = -55
+vLeak = -60
+v_init = -61.5
 NaVRatio = [0.4, 0]
-# Na Density has the largest effect on block
-NaDensity =  [0.003671929, 0.002279877] #0.002975903
-KDensity = 0.004841545 #[0.003726023, 0.005957068] #0.004841545
+NaDensity =  [0.003452431, 0.002592035] 
+KDensity = 0.003873771
 SomaDiam = 17.5
-DendLen = 513.0843283
-HillLen = 20.75
-AISLen = [20.5, 14.5]
+DendLen = 508
+HillLen = 24
+AISLen = [22, 16]
 Multiplier = 30
+Factor = 0.4
 
 h.dt = 1/10 #1/ms
 
@@ -64,13 +64,12 @@ print(IR_val_B)
 
 
 # load mat files of conductances
-filepath = 'C:/Users/sophi/Documents/Schwartz/analysis/DynamicClampConductances/'
+filepath = 'C:/Users/Documents/Schwartz/analysis/DynamicClampConductances/'
 Alpha_n100_exc = scipy.io.loadmat(filepath+'Sophia_Alpha_cm100_Exc'+'.mat')
 Alpha_n100_inh = scipy.io.loadmat(filepath+'Sophia_Alpha_cm100_Inh'+'.mat')
 #bSbC_n100_exc = scipy.io.loadmat(filepath+'Sophia_Bursty_cm100_Exc'+'.mat')
 #bSbC_n100_inh = scipy.io.loadmat(filepath+'Sophia_Bursty_cm100_Inh'+'.mat')
 
-Factor = 0.6 # 0.48 # average multiplier for DC recordings 0.4786
 A_Exc = h.Vector(1000/Alpha_n100_exc['conductances'][0]) * Factor # needs to be in MOhms
 A_Inh = h.Vector(1000/Alpha_n100_inh['conductances'][0]) * Factor
 #B_Exc = h.Vector(1000/bSbC_n100_exc['conductances'][0]) * Factor
